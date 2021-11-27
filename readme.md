@@ -3,7 +3,9 @@ Webauthn adapter for Laravel
 
 LaravelWebauthn is an adapter to use Webauthn in Laravel. It provides you with all the tools you need to build 2fa login or authorisation.
 
-It is highly inspired and shares a lot of its code with the [laravel-webauthn package by asbiin](https://github.com/asbiin/laravel-webauthn), but comes without routes, controllers and middlewares to give you maximum flexibilities.
+It is highly inspired and copies a lot of code from the [laravel-webauthn package by asbiin](https://github.com/asbiin/laravel-webauthn), but comes without routes, controllers and middlewares to give you maximum flexibilities. It is basically the extracted core functionality.
+
+If you want a ready to go implementation to just drop into your application, be sure to check his repository out.
 
 # Installation
 
@@ -129,14 +131,14 @@ Be sure to keep the public key present for the validation part, e.g. in session 
 
 ```html
   <!-- load javascript part -->
-  <script src="{!! secure_asset('vendor/webauthn/webauthn.js') !!}"></script>
+  <script src="{!! secure_asset('vendor/pschocke/webauthn-laravel/webauthn.js') !!}"></script>
 ...
     <!-- button click to run registration -->
     <button onclick="register()">
         Register new Device
     </button>
   <!-- form to send datas to -->
-  <form method="POST" action="{{ route('webauthn.auth') }}" id="form">
+  <form method="POST" action="" id="form">
     @csrf
     <input type="hidden" name="data" id="data" />
   </form>
