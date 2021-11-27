@@ -2,10 +2,9 @@
 
 namespace Pschocke\LaravelWebauthn\Services\Webauthn;
 
-use Illuminate\Contracts\Auth\Authenticatable as User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Pschocke\LaravelWebauthn\Contracts\CredentialRepository as CredentialRepositoryInterface;
+use Pschocke\LaravelWebauthn\Contracts\CredentialRepositoryInterface;
 use Pschocke\LaravelWebauthn\Contracts\WebauthnCredentiable;
 use Pschocke\LaravelWebauthn\Models\WebauthnCredential;
 use Webauthn\AttestedCredentialData;
@@ -119,7 +118,7 @@ class CredentialRepository implements PublicKeyCredentialSourceRepository, Crede
      *
      * @throws ModelNotFoundException
      */
-    private function model(string $credentialId): ?WebauthnCredential
+    protected function model(string $credentialId): ?WebauthnCredential
     {
         if (! $this->guard->guest()) {
             /** @var WebauthnCredential */
@@ -130,7 +129,6 @@ class CredentialRepository implements PublicKeyCredentialSourceRepository, Crede
 
             return $webauthnKey;
         }
-
         return null;
     }
 

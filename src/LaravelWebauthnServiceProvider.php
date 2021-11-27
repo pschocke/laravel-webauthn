@@ -4,11 +4,11 @@ namespace Pschocke\LaravelWebauthn;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
-use Pschocke\LaravelWebauthn\Contracts\CredentialRepository;
+use Pschocke\LaravelWebauthn\Contracts\CredentialRepositoryInterface;
 use Pschocke\LaravelWebauthn\Services\Webauthn;
 
 
-class LaravelWebauthnServiceProvider extends ServiceProvider implements DeferrableProvider
+class LaravelWebauthnServiceProvider extends ServiceProvider
 {
 
     /**
@@ -38,7 +38,7 @@ class LaravelWebauthnServiceProvider extends ServiceProvider implements Deferrab
             ], 'webauthn-migrations');
 
             $this->publishes([
-                __DIR__.'/../resources/js' => public_path('vendor/webauthn'),
+                __DIR__.'/../resources/js' => public_path('vendor/pschocke/laravel-webauthn'),
             ], 'webauthn-assets');
         }
     }
@@ -54,7 +54,7 @@ class LaravelWebauthnServiceProvider extends ServiceProvider implements Deferrab
             __DIR__.'/../config/webauthn.php', 'webauthn'
         );
 
-        $this->app->singleton(CredentialRepository::class, \Pschocke\LaravelWebauthn\Services\Webauthn\CredentialRepository::class);
+        $this->app->singleton(CredentialRepositoryInterface::class, Webauthn\CredentialRepository::class);
         $this->app->singleton(Webauthn::class, Webauthn::class);
     }
 }

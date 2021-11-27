@@ -2,7 +2,7 @@
 
 namespace Pschocke\LaravelWebauthn\Contracts;
 
-interface CredentialRepository
+interface CredentialRepositoryInterface
 {
 
 }

@@ -3,6 +3,7 @@
 namespace Pschocke\LaravelWebauthn\Services\Webauthn;
 
 use Illuminate\Contracts\Config\Repository as Config;
+use Pschocke\LaravelWebauthn\Contracts\CredentialRepositoryInterface;
 
 abstract class AbstractFactory
 {
@@ -16,11 +17,11 @@ abstract class AbstractFactory
     /**
      * Public Key Credential Source Repository.
      *
-     * @var CredentialRepository
+     * @var CredentialRepositoryInterface
      */
     protected $repository;
 
-    public function __construct(Config $config, CredentialRepository $repository)
+    public function __construct(Config $config, CredentialRepositoryInterface $repository)
     {
         $this->config = $config;
         // Credential Repository
