@@ -1,5 +1,5 @@
 {
-    "name": "pschocke/laravel-webauthn",
+    "name": "pschocke/laravel-webauthn-core",
     "description": "Non opinionated Laravel Webauthn support",
     "keywords": [
         "laravel",
